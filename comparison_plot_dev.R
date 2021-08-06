@@ -25,20 +25,18 @@ pp <- xyplot(runningprf~tries, data=df,
        groups = wager,
        scales=list(cex=.8, col="black", x = list(log = T), y = list(log = F)),
        auto.key = TRUE,
-       par.settings = list(superpose.symbol = list(col = c("blue","red"),
-                                                   pch = 1),
-                           superpose.line = list(col = c("blue","red"),
+       par.settings = list(superpose.line = list(col = c("blue","red"),
                                                  lwd = 1)),
        xlab="Tries",
        xlim = c(1, n),
        ylab="Profit",
-       ylim = c(-3.0, 3.0),
+       ylim = c(-3.1, 3.1),
        main="Running profits from wagers 3 (blue) and 4 (red)",
-       type=c("p","b"),
-       # panel = function(x,y) {
-       #   panel.xyplot(x,y, type = 'l');
-       #   panel.lines(x=log(1:n), y=rep(0.0,n), col="black")
-       # }) 
+       type=c("l"),
+       panel = function( x,y,...) {
+         panel.abline( h=y[ which(y==0.0) ], lty = "dotted", col = "black", lwd = 1)
+         panel.xyplot( x,y,...)
+       }
 )
 
 print(pp)
