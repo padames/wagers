@@ -25,11 +25,11 @@ wagerLabels = c("Wager 3", "Wager 4")
 
 pp <- xyplot(runningprf~tries, data=df,
        groups = wager,
-       # scales=list(cex=.8, col="black", x = list(log = T), y = list(log = F)),
        par.settings = list(superpose.line = list(col = c("blue","red"),
                                                  lwd = 1)),
-       auto.key=list(space="top", columns=2, 
-                     title="Running profits from wagers 3 (blue) and 4 (red)", 
+       auto.key=list(space="top", columns=2,
+                     text=c("Wager3 = 3(die>3) - 3(die<=3)", "Wager 4 = 1.5(die>2) - 3(die<=2)"),
+                     title="Running profits from two different wagers", 
                      cex.title=2,
                      lines=TRUE, points=FALSE),
        xlab="Tries",
@@ -40,9 +40,8 @@ pp <- xyplot(runningprf~tries, data=df,
                    alternating = 1,   # axes labels left/bottom 
                    tck = c(1,0)),   # ticks only with labels
        ylab="Profit",
-       ylim = c(-3.1, 3.1),
+       ylim = c(-3.5, 3.5),
        type=c("l"),
-       # main = "Running profits from wagers 3 (blue) and 4 (red)",
        panel=panel.superpose,
        panel.groups = function( x,y,group.number,...) {
          # print(levels(factor(df$wager))[group.number])
@@ -50,14 +49,10 @@ pp <- xyplot(runningprf~tries, data=df,
          panel.grid(v=-1, h=-1, lty=3)
          xt <- x[x==log(min(x)+1)] # find latest year
          yt <- y[x==min(x)] # find value at latest year
-         print(xt)
-         print(yt)
          panel.text(xt, yt, labels=wagerLabels[group.number], 
                     pos=4,  # show labels on right side
                     ...)
          panel.xyplot(x,y,...)
-         # print(levels(df$wager)[group.number])
-         # print(group.number[1])
        }
 )
 
