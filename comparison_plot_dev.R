@@ -1,4 +1,3 @@
-
 library(tigerstats)
 
 n = 2000
