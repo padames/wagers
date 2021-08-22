@@ -23,8 +23,8 @@ for (i in 1:30){
   
   die3 = sample(outsp,n,replace=T)
   die4 = sample(outsp,n,replace=T)
-  profit3 = 3*(die3>3) - 3*(die3<=3)
-  profit4 = 1.5*(die4>2) - 3*(die4<=2)
+  profit3 = 300*(die3>3) - 300*(die3<=3)
+  profit4 = 150*(die4>2) - 300*(die4<=2)
   
   runningprf3 = cumsum(profit3)/seq(1,n)
   runningprf4 = cumsum(profit4)/seq(1,n)
@@ -39,7 +39,7 @@ for (i in 1:30){
                par.settings = list(superpose.line = list(col = c("blue","red"),
                                                          lwd = 1)),
                auto.key=list(space="top", columns=2,
-                             text=c("Wager3 = 3(die>3) - 3(die<=3)", "Wager 4 = 1.5(die>2) - 3(die<=2)"),
+                             text=c("Wager3 = 300(die>3) - 300(die<=3)", "Wager 4 = 150(die>2) - 300(die<=2)"),
                              title="Running profits from two different wagers", 
                              cex.title=2,
                              lines=TRUE, points=FALSE),
@@ -51,7 +51,7 @@ for (i in 1:30){
                            alternating = 1,   # axes labels left/bottom 
                            tck = c(1,0)),   # ticks only with labels
                ylab="Profit",
-               ylim = c(-3.5, 3.5),
+               ylim = c(-350, 350),
                type=c("l"),
                panel=panel.superpose,
                panel.groups = function( x,y,group.number,...) {
