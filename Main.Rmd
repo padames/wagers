@@ -1,0 +1,25 @@
+---
+title: "Untitled"
+author: "P. Adames"
+date: "8/22/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Expected values and variance
+
+I am not a fan of gambling but I find interesting to think that life itself is a gamble.
+To avoid the inevitability of daily random events seems futile: will I hit heavier traffic
+if I leave 5 minutes later than usual? Will our weekend picnic get rained out?
+
+Oftentimes forecasts and averages are rendered useless by the
+seeminngly wild variations encountered in spatial and temporal variations of natural phenomena.
+After all statistics in general is well known for failing to predict the unusual events.
+
+## Wagers 
+
+As a means to experiencing the impact of expected values and variability
+
