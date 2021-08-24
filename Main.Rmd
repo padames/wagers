@@ -7,7 +7,7 @@ output:
     df_print: paged
   pdf_document: default
   word_document: default
-bibliography: bib.bib
+bibliography: biblio.bib
 description: "Visualizing expectations and variance via simulation"
 ---
 
@@ -29,5 +29,38 @@ After all, statistics in general is well known for failing to predict the unusua
 
 As a means to experiencing the impact of expected values and variability let's follow a slightly modified
 example of wagers from [@RodMen2018, p.19].
+
+For wager 3:  you pay $300 to enter and I roll a die. If it comes up 1, 2, or 3, then
+I keep your money. If it comes up 4, 5, or 6, then I give you back $600 (your
+original bet plus a $300 profit).
+
+For wager 4:  you pay $300 to enter and I roll a die. If it comes up 1 or 2 then I get
+to keep your money. If it comes up 3, 4, 5, or 6 then I give you back $450 (your original $300 plus a profit of $150).
+
+
+## Comparing the wagers
+
+We need to compare the two wagers to assess their relative benefit.
+
+
+### Expected values
+
+The expected values of each wager are:
+
+E(W_3) = (-300) x (3/6) + 300 x (3/6)
+E(W_4) = (-300) x (4/6) + 150 x (2/6)
+
+### Simulation
+
+We can also use numerical simulation to compare them.
+
+
+## Variance
+
+The variability of the wagers is as follows:
+
+
+
+
 
 ## References
