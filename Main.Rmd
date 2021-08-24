@@ -53,10 +53,15 @@ The expected profit of each wager are:
 
 `E(W_4) = [(0) x (2/3) + 150 x (1/3)] - 300`
  
+ 
+Note: I modified the values of the original wagers in an effort to make the dollar amounts more
+realistic. This apparently takes away from what is considere a fair bet, however we will defer
+that subject for another day and definitively recommend that the curious reader go to the motivating 
+source for this discussion [@RodMen2018, Chapter 2] 
 
 Let's use R to compute those values.
 
-```{r "expected profit from waher 3", include=TRUE, cache=TRUE}
+```{r "expected profit from waher 3", include=TRUE, cache=FALSE}
 cost_of_entry = 300
 probability_of_die_eq_or_less_than_three = 0.5
 payout_of_die_eq_or_less_than_three = 0
@@ -76,7 +81,7 @@ cat(paste(
 
 In a similar fashion the expected statistical profit for wager 4 is:
 
-```{r "expected profit from wager 4", include=TRUE}
+```{r "expected profit from wager 4", include=TRUE, cache=FALSE}
 cost_of_entry = 300
 probability_of_die_eq_or_less_than_two = 1 / 3
 payout_of_die_eq_or_less_than_two = 0
@@ -105,6 +110,12 @@ wager.
 ### Simulation
 
 We can also use numerical simulation to compare them.
+In the following animated gif image I have repeated 30 sets of 20,000 bets each for both wagers described above.
+
+
+```{r "comparing wagers via simulation", echo=FALSE, results='asis'}
+knitr::include_graphics("animations/wager_comp_sim.gif", dpi = 86)
+```
 
 
 ## Variance
