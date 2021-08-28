@@ -41,7 +41,7 @@ to keep your money. If it comes up 3, 4, 5, or 6 then I give you back $450 (your
 ## Comparing the wagers
 
 We need to compare the two wagers to assess their relative benefit.
-The statistical mean of the expected value of each wager should be a mathematically and 
+The statistical mean of the expected value of each wager is a  
 straightforward way of doing so.
 
 ### Expected Profit from the wagers
@@ -129,9 +129,9 @@ The statistical variance of the wagers is as follows:
 
            - {x_1 P(X = x_1) + .. + x_n P(X= x_n)}^2
 
-For wager 3:
+Substituting for wager 3:
 
-`V(W_3) = [(0) x (1/2) + 300 x (1/2)] - 300`
+`V(W_3) = (0)^2 x (1/2) + (300)^2 x (1/2)] - `
 
 `V(W_4) = [(0) x (2/3) + 150 x (1/3)] - 300`
 
