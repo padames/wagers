@@ -132,9 +132,10 @@ The statistical variance of the wagers is as follows:
 
 Substituting for wager 3:
 
-`V(W_3) = (0)^2 x (1/2) + (300)^2 x (1/2)] - `
+    V(W_3) = (0)^2 x (1/2) + (300)^2 x (1/2)] - 300 ^2 - { 0 x (1/2) + 300 x (1/2)}^2
+           = 
 
-`V(W_4) = [(0) x (2/3) + 150 x (1/3)] - 300`
+    V(W_4) = [(0) x (2/3) + 150 x (1/3)] - 300
 
 
 
