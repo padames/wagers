@@ -215,9 +215,11 @@ straightforward way of doing so.</p>
 <h3>Expected Profit from the wagers</h3>
 <p>The profit of a wager is defined as the payout minus the cost of entry. The expected profit of each wager are:</p>
 <pre><code>E(W_3) = [(0) x (1/2) + 600 x (1/2)] - 300 
+       = [(-300) x (1/2) + (300) x (1/2)]
        = 0
 
 E(W_4) = [(0) x (1/3) + 450 x (2/3)] - 300
+       = [(-300) x (1/3) + 150 x (2/3)]
        = 0</code></pre>
 <p>Note: I modified the values of the original wagers in an effort to make the dollar amounts more realistic. This apparently takes away from what is considere a fair bet, however we will defer that subject for another day and definitively recommend that the curious reader go to the motivating source for this discussion <span class="citation">(Rodriguez and Mendes 2018, Chapter 2)</span></p>
 <p>Let’s use R to compute those values.</p>
@@ -243,9 +245,9 @@ cat(paste(
 probability_of_die_eq_or_less_than_two = 1 / 3
 payout_of_die_eq_or_less_than_two = 0
 payout_of_die_greater_than_two = 300 + 150
-expected_value_wager_4 &lt;-payout_of_die_eq_or_less_than_two * probability_of_die_eq_or_less_than_two +
-  payout_of_die_greater_than_two * (1 - probability_of_die_eq_or_less_than_two) -
-  cost_of_entry
+expected_value_wager_4 &lt;- (payout_of_die_eq_or_less_than_two * probability_of_die_eq_or_less_than_two +
+                             payout_of_die_greater_than_two * (1 - probability_of_die_eq_or_less_than_two)) -
+                             cost_of_entry
 cat(paste(
   paste(&quot;Expected net profit from wager 4:&quot;,
         ifelse(all.equal(expected_value_wager_4, 0),
@@ -272,8 +274,10 @@ cat(paste(
 
        - {x_1 P(X = x_1) + .. + x_n P(X= x_n)}^2</code></pre>
 <p>Substituting for wager 3:</p>
-<p><code>V(W_3) = (0)^2 x (1/2) + (300)^2 x (1/2)] -</code></p>
-<p><code>V(W_4) = [(0) x (2/3) + 150 x (1/3)] - 300</code></p>
+<pre><code>V(W_3) = (0)^2 x (1/2) + (300)^2 x (1/2)] - 300 ^2 - { 0 x (1/2) + 300 x (1/2)}^2
+       = 
+
+V(W_4) = [(0) x (2/3) + 150 x (1/3)] - 300</code></pre>
 </div>
 <div id="references" class="section level2 unnumbered">
 <h2 class="unnumbered">References</h2>
