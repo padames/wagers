@@ -109,8 +109,9 @@ wager.
 
 ### Simulation
 
-We can also use numerical simulation to compare them.
-In the following animated gif image I have repeated 30 sets of 20,000 bets each for both wagers described above.
+Wagers 3 and 4 have zero expected profit/loss. We can verify this via numerical simulation.
+In the following animated gif image I have repeated 30 sets of 20,000 bets each starting with
+a different random number seed, for each of wager described above.
 
 
 ```{r "comparing wagers via simulation", echo=FALSE, results='asis'}
