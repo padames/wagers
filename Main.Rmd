@@ -1,7 +1,7 @@
 ---
 title: "Visualizing expectations and variation through simulation"
 author: "P. Adames"
-date: "8/22/2021"
+date: "`r Sys.Date()`"
 output:
   html_document:
     df_print: paged
@@ -121,9 +121,12 @@ knitr::include_graphics("animations/wager_comp_sim.gif", dpi = 86)
 
 ## Variance
 
-The variability of the wagers is as follows:
+The statistical variance of the wagers is as follows:
 
 
+`V(W_3) = [(0) x (1/2) + 300 x (1/2)] - 300`
+
+`V(W_4) = [(0) x (2/3) + 150 x (1/3)] - 300`
 
 
 
