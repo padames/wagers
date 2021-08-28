@@ -49,10 +49,11 @@ straightforward way of doing so.
 The profit of a wager is defined as the payout minus the cost of entry.
 The expected profit of each wager are:
 
-    E(W_3) = [(0) x (1/2) + 300 x (1/2)] - 300
+    E(W_3) = [(0) x (1/2) + 600 x (1/2)] - 300 
+           = 0
 
-    E(W_4) = [(0) x (2/3) + 150 x (1/3)] - 300
- 
+    E(W_4) = [(0) x (1/3) + 450 x (2/3)] - 300
+           = 0
  
 Note: I modified the values of the original wagers in an effort to make the dollar amounts more
 realistic. This apparently takes away from what is considere a fair bet, however we will defer
