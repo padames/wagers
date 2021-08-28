@@ -123,6 +123,11 @@ Because R is a vectorized language, this is done in a single line:
 
     die_results = sample(x =1:6, size = 20000, replace = TRUE)
     
+The running expected profit is obtained by dividing the sum of the profits by the number of times played.
+That explains why if you always _won_ the bet the maximum the running profit would ever be is the expected
+net payout, $300 in the case of wager 3 and $150 for wager 4. 
+However, both offer the same outcome if you always lost the bet because both would averge a $300 loss on average.
+
 
 ```{r "comparing wagers via simulation", echo=FALSE, results='asis'}
 knitr::include_graphics("animations/wager_comp_sim.gif", dpi = 86)
