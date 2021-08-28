@@ -49,9 +49,9 @@ straightforward way of doing so.
 The profit of a wager is defined as the payout minus the cost of entry.
 The expected profit of each wager are:
 
-`E(W_3) = [(0) x (1/2) + 300 x (1/2)] - 300`
+    E(W_3) = [(0) x (1/2) + 300 x (1/2)] - 300
 
-`E(W_4) = [(0) x (2/3) + 150 x (1/3)] - 300`
+    E(W_4) = [(0) x (2/3) + 150 x (1/3)] - 300
  
  
 Note: I modified the values of the original wagers in an effort to make the dollar amounts more
@@ -123,6 +123,13 @@ knitr::include_graphics("animations/wager_comp_sim.gif", dpi = 86)
 
 The statistical variance of the wagers is as follows:
 
+    V(x) = E{[X - E(X)]^2} = E(X^2) - {E(X)}^2
+
+         = (x_1)^2 P(X = x_1) + .. + (x_n)^2 P(X = x_n)
+
+           - {x_1 P(X = x_1) + .. + x_n P(X= x_n)}^2
+
+For wager 3:
 
 `V(W_3) = [(0) x (1/2) + 300 x (1/2)] - 300`
 

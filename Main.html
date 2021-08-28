@@ -213,8 +213,9 @@ pre code {
 <div id="expected-profit-from-the-wagers" class="section level3">
 <h3>Expected Profit from the wagers</h3>
 <p>The profit of a wager is defined as the payout minus the cost of entry. The expected profit of each wager are:</p>
-<p><code>E(W_3) = [(0) x (1/2) + 300 x (1/2)] - 300</code></p>
-<p><code>E(W_4) = [(0) x (2/3) + 150 x (1/3)] - 300</code></p>
+<pre><code>E(W_3) = [(0) x (1/2) + 300 x (1/2)] - 300
+
+E(W_4) = [(0) x (2/3) + 150 x (1/3)] - 300</code></pre>
 <p>Note: I modified the values of the original wagers in an effort to make the dollar amounts more realistic. This apparently takes away from what is considere a fair bet, however we will defer that subject for another day and definitively recommend that the curious reader go to the motivating source for this discussion <span class="citation">(Rodriguez and Mendes 2018, Chapter 2)</span></p>
 <p>Let’s use R to compute those values.</p>
 <pre class="r"><code>cost_of_entry = 300
@@ -262,6 +263,12 @@ cat(paste(
 <div id="variance" class="section level2">
 <h2>Variance</h2>
 <p>The statistical variance of the wagers is as follows:</p>
+<pre><code>V(x) = E{[X - E(X)]^2} = E(X^2) - {E(X)}^2
+
+     = (x_1)^2 P(X = x_1) + .. + (x_n)^2 P(X = x_n)
+
+       - {x_1 P(X = x_1) + .. + x_n P(X= x_n)}^2</code></pre>
+<p>For wager 3:</p>
 <p><code>V(W_3) = [(0) x (1/2) + 300 x (1/2)] - 300</code></p>
 <p><code>V(W_4) = [(0) x (2/3) + 150 x (1/3)] - 300</code></p>
 </div>
