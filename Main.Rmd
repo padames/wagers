@@ -49,6 +49,9 @@ straightforward way of doing so.
 The profit of a wager is defined as the payout minus the cost of entry.
 The expected profit of each wager are:
 
+    E(X)   = [x_1 x P(X=x_1) + .. + x_n P(X=x_n)] - C                                               [1]
+           = [(x_1 -C) x P(X=x_1) + .. + (x_n -C) x P(X=x_n)]                                       [2]
+
     E(W_3) = [(0) x (1/2) + 600 x (1/2)] - 300 
            = [(-300) x (1/2) + (300) x (1/2)]
            = 0
@@ -57,7 +60,7 @@ The expected profit of each wager are:
            = [(-300) x (1/3) + 150 x (2/3)]
            = 0
 
-The second expression in the above formulae is simpler to compute the variance in what follows.
+The second expression, Eq [2], in the above formulae is simpler to compute the variance in Eq. [3] below.
  
 Note: I modified the values of the original wagers in an effort to make the dollar amounts more
 realistic. This apparently takes away from what is considere a fair bet, however we will defer
@@ -123,10 +126,12 @@ Because R is a vectorized language, this is done in a single line:
 
     die_results = sample(x =1:6, size = 20000, replace = TRUE)
     
-The running expected profit is obtained by dividing the sum of the profits by the number of times played.
-That explains why if you always _won_ the bet the maximum the running profit would ever be is the expected
-net payout, $300 in the case of wager 3 and $150 for wager 4. 
-However, both offer the same outcome if you always lost the bet because both would averge a $300 loss on average.
+The running profit is obtained by dividing the sum of the net profit by the number of times played.
+That explains why if you always _won_ the bet the maximum the running profit would ever be is the maximum payout, 
+`$300` in the case of wager 3 and `$150` for wager 4. 
+However, if you always _lost_ both would averge a $300 loss.
+Please remember that this does not make wager 3 any more desirable by itself because both converge to the 
+same expected value in the long term, zero profit.
 
 
 ```{r "comparing wagers via simulation", echo=FALSE, results='asis'}
@@ -136,20 +141,31 @@ knitr::include_graphics("animations/wager_comp_sim.gif", dpi = 86)
 
 ## Variance
 
-The statistical variance of the wagers is as follows:
+So, how else can we qualify the different wagers? Are they different in any practical way?
 
-    V(x) = E{[X - E(X)]^2} = E(X^2) - {E(X)}^2
+The statistical variance might give us a clue, it is calculated as follows:
 
-         = (x_1)^2 P(X = x_1) + .. + (x_n)^2 P(X = x_n)
+    V(x) = E{[X - E(X)]^2} = E(X^2) - {E(X)}^2                                                      [3]
 
-           - {x_1 P(X = x_1) + .. + x_n P(X= x_n)}^2
+         = (x_1)^2 P(X = x_1) + .. + (x_n)^2 P(X = x_n)                                             
+           - {x_1 P(X = x_1) + .. + x_n P(X= x_n)}^2                                                [4]
 
 Substituting for wager 3:
 
-    V(W_3) = (0)^2 x (1/2) + (300)^2 x (1/2)] - 300 ^2 - { 0 x (1/2) + 300 x (1/2)}^2
-           = 
+    V(W_3) = [(-300)^2 x (1/2) + (300)^2 x (1/2)] - {(-300) x (1/2) + 300 x (1/2)}^2
+           =  300^2 - {0}
+           =  90,000
 
-    V(W_4) = [(0) x (2/3) + 150 x (1/3)] - 300
+    V(W_4) = [(-300)^2 x (1/3) + (150)^2 x (2/3)] - {(-300) x (1/3) + (150) x (2/3)}^2
+           =  30,000 + 50 x 150 x 2 - {0}
+           = 30,000 + 15,000 
+           = 45,000
+
+
+This means that the variability in profit with wager 3 can be susbtantially larger with wager3 than with
+wager 4. What does that say abiut the gambling budget necessary to sustain these wagers?
+
+
 
 
 
