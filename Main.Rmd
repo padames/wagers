@@ -145,8 +145,10 @@ So, how else can we qualify the different wagers? Are they different in any prac
 
 The statistical variance might give us a clue, it is calculated as follows:
 
-    V(x) = E{[X - E(X)]^2} = E(X^2) - {E(X)}^2                                                      [3]
-
+    V(x) = E{[X - E(X)]^2}                                                       [3]
+         = E{X^2 - 2 X E(X) + {E(X)}^2
+         = E(X^2) - 2 E(X) E(X) + {E(X)}^2
+         = E(X^2) - {E(X)}^2
          = (x_1)^2 P(X = x_1) + .. + (x_n)^2 P(X = x_n)                                             
            - {x_1 P(X = x_1) + .. + x_n P(X= x_n)}^2                                                [4]
 

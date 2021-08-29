@@ -11,7 +11,7 @@
 
 <meta name="author" content="P. Adames" />
 
-<meta name="date" content="2021-08-28" />
+<meta name="date" content="2021-08-29" />
 
 <title>Visualizing expectations and variation through simulation</title>
 
@@ -191,7 +191,7 @@ pre code {
 
 <h1 class="title toc-ignore">Visualizing expectations and variation through simulation</h1>
 <h4 class="author">P. Adames</h4>
-<h4 class="date">2021-08-28</h4>
+<h4 class="date">2021-08-29</h4>
 
 </div>
 
@@ -224,7 +224,7 @@ E(W_3) = [(0) x (1/2) + 600 x (1/2)] - 300
 E(W_4) = [(0) x (1/3) + 450 x (2/3)] - 300
        = [(-300) x (1/3) + 150 x (2/3)]
        = 0</code></pre>
-<p>The second expression in the above formulae is simpler to compute the variance in what follows.</p>
+<p>The second expression, Eq [2], in the above formulae is simpler to compute the variance in Eq. [3] below.</p>
 <p>Note: I modified the values of the original wagers in an effort to make the dollar amounts more realistic. This apparently takes away from what is considere a fair bet, however we will defer that subject for another day and definitively recommend that the curious reader go to the motivating source for this discussion <span class="citation">(Rodriguez and Mendes 2018, Chapter 2)</span></p>
 <p>Let’s use R to compute those values.</p>
 <pre class="r"><code>cost_of_entry = 300
@@ -276,16 +276,22 @@ cat(paste(
 <h2>Variance</h2>
 <p>So, how else can we qualify the different wagers? Are they different in any practical way?</p>
 <p>The statistical variance might give us a clue, it is calculated as follows:</p>
-<pre><code>V(x) = E{[X - E(X)]^2} = E(X^2) - {E(X)}^2                                                      [3]
-
+<pre><code>V(x) = E{[X - E(X)]^2}                                                       [3]
+     = E{X^2 - 2 X E(X) + {E(X)}^2
+     = E(X^2) - 2 E(X) E(X) + {E(X)}^2
+     = E(X^2) - {E(X)}^2
      = (x_1)^2 P(X = x_1) + .. + (x_n)^2 P(X = x_n)                                             
-
        - {x_1 P(X = x_1) + .. + x_n P(X= x_n)}^2                                                [4]</code></pre>
 <p>Substituting for wager 3:</p>
-<pre><code>V(W_3) = (0)^2 x (1/2) + (300)^2 x (1/2)] - 300 ^2 - { 0 x (1/2) + 300 x (1/2)}^2
-       = 
+<pre><code>V(W_3) = [(-300)^2 x (1/2) + (300)^2 x (1/2)] - {(-300) x (1/2) + 300 x (1/2)}^2
+       =  300^2 - {0}
+       =  90,000
 
-V(W_4) = [(0) x (2/3) + 150 x (1/3)] - 300</code></pre>
+V(W_4) = [(-300)^2 x (1/3) + (150)^2 x (2/3)] - {(-300) x (1/3) + (150) x (2/3)}^2
+       =  30,000 + 50 x 150 x 2 - {0}
+       = 30,000 + 15,000 
+       = 45,000</code></pre>
+<p>This means that the variability in profit with wager 3 can be susbtantially larger with wager3 than with wager 4. What does that say abiut the gambling budget necessary to sustain these wagers?</p>
 </div>
 <div id="references" class="section level2 unnumbered">
 <h2 class="unnumbered">References</h2>
