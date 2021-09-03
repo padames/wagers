@@ -164,8 +164,8 @@ Substituting for wager 3:
            = 45,000
 
 
-This means that the variability in profit with wager 3 can be susbtantially larger with wager3 than with
-wager 4. What does that say abiut the gambling budget necessary to sustain these wagers?
+This means that the variability of the profit with wager 3 can be substantially larger that with wager 4, although both have zero expected profit in the long run. 
+What does that say about the gambling budget necessary to sustain these wagers?
 
 
 
