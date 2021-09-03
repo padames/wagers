@@ -19,13 +19,39 @@ df <- rbind(df3, df4)
 png(file="simbudget%02d.png", width=1200, height=800)
 colf <- function(w) { ifelse(test = w == "wager 3", 
                              yes = "red", no = "blue")}
+my.settings <- list(
+  # superpose.polygon = sapply(df$wager, function(x){ifelse( x == "wager 3", "red", "blue")}), 
+  strip.background = list(col="lightyellow"),
+  strip.border = list(col= "black")
+  )
+# print(trellis.par.get())
 pp <- barchart(cashflow~tries | wager, data=df, horiz=F,
-               col = sapply(df$wager, function(x){ifelse( x == "wager 3", "red", "blue")}), 
+               groups = wager,
                lty=0, stack=F, 
                origin=0, reference=T,
+               par.settings = my.settings,
                # auto.key = list(space = "right"),
-               # scales=list(x=list(draw=T, tck=(1))
-
+               ylim = c(-40000,40000),
+               scales=list(
+                 x=list(draw=T,
+                        at=c(0,500,1000,1500,2000),
+                        labels=c("0","500","1,000","1,500","2,000"),
+                        tck=(1)
+                        ),
+                 y=list(draw=T,
+                        at=c(-40000,-30000,-20000,-10000,-5000,0,5000,10000,20000,30000,40000),
+                        labels=c("-40,000", "-30,000","-20,000", "-10,000", "-5,000", "0", "5,000", "10,000", "20,000", "30,000","40,000"),
+                        tck=(1))
+               ),
+               panel.groups = function( x,y, group.number,...) {
+                 panel.grid(v=-1, h=-1, lty=3)
+                 xt <- x[y==min(y)] # find latest year
+                 yt <- y[y==min(y)] # find value at latest year
+                 panel.text(xt, yt, labels=wagerLabels[group.number], 
+                            pos=4,  # show labels on right side
+                            ...)
+                 panel.barchart(x,y,col = ifelse(group.number==1 , "red", "blue"),border = T...)
+               }
 )
 
 print(pp)
