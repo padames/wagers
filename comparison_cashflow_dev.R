@@ -27,7 +27,7 @@ my.settings <- list(
 # print(trellis.par.get())
 pp <- barchart(cashflow~tries | wager, data=df, horiz=F,
                groups = wager,
-               lty=0, stack=F, 
+               # lty=0, stack=F, 
                origin=0, reference=T,
                par.settings = my.settings,
                # auto.key = list(space = "right"),
@@ -44,13 +44,13 @@ pp <- barchart(cashflow~tries | wager, data=df, horiz=F,
                         tck=(1))
                ),
                panel.groups = function( x,y, group.number,...) {
-                 panel.grid(v=-1, h=-1, lty=3)
                  xt <- x[y==min(y)] # find latest year
                  yt <- y[y==min(y)] # find value at latest year
                  panel.text(xt, yt, labels=wagerLabels[group.number], 
                             pos=4,  # show labels on right side
                             ...)
-                 panel.barchart(x,y,col = ifelse(group.number==1 , "red", "blue"),border = T...)
+                 panel.barchart(x,y,stack=F,lty = 0,col = ifelse(group.number==1 , "red", "blue"),border = T...)
+                 panel.grid(v=-1, h=-1, lty=10)
                }
 )
 
