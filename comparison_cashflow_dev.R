@@ -27,11 +27,14 @@ my.settings <- list(
 # print(trellis.par.get())
 pp <- barchart(cashflow~tries | wager, data=df, horiz=F,
                groups = wager,
-               box.ratio = 100,
+               box.ratio = 2,
                lty=0.1, stack=F, 
                origin=0, reference=T,
                par.settings = my.settings,
-               # auto.key = list(space = "right"),
+               # auto.key = list(#space = "top", columns=2, 
+               #                 title="Cash flows for two wagers",
+               #                 cex.title=1.1),
+               col=c("red","blue"),
                ylim = c(-40000,40000),
                scales=list(
                  x=list(draw=T,
@@ -44,15 +47,15 @@ pp <- barchart(cashflow~tries | wager, data=df, horiz=F,
                         labels=c("-40,000", "-30,000","-20,000", "-10,000", "-5,000", "0", "5,000", "10,000", "20,000", "30,000","40,000"),
                         tck=(1))
                ),
-               panel.groups = function( x,y, group.number,...) {
-                 xt <- x[y==min(y)] # find latest year
-                 yt <- y[y==min(y)] # find value at latest year
-                 panel.text(xt, yt, labels=wagerLabels[group.number], 
-                            pos=4,  # show labels on right side
-                            ...)
-                 panel.barchart(x,y,stack=F,lty = 0.1,col = ifelse(group.number==1 , "red", "blue"),border = T, box.width=0.5,...)
-                 # panel.grid(v=-1, h=-1, lty=10)
-               }
+               # panel.groups = function( x,y, group.number,...) {
+               #   xt <- x[y==min(y)] # find latest year
+               #   yt <- y[y==min(y)] # find value at latest year
+               #   panel.text(xt, yt, labels=wagerLabels[group.number], 
+               #              pos=4,  # show labels on right side
+               #              ...)
+               #   panel.barchart(x,y,stack=F,lty = 0.1,col = ifelse(group.number==1 , "red", "blue"),border = F, box.width=0.5,...)
+               #   # panel.grid(v=-1, h=-1, lty=10)
+               # }
 )
 
 print(pp)
