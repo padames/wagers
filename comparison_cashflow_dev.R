@@ -27,7 +27,8 @@ my.settings <- list(
 # print(trellis.par.get())
 pp <- barchart(cashflow~tries | wager, data=df, horiz=F,
                groups = wager,
-               # lty=0, stack=F, 
+               box.ratio = 100,
+               lty=0.1, stack=F, 
                origin=0, reference=T,
                par.settings = my.settings,
                # auto.key = list(space = "right"),
@@ -49,8 +50,8 @@ pp <- barchart(cashflow~tries | wager, data=df, horiz=F,
                  panel.text(xt, yt, labels=wagerLabels[group.number], 
                             pos=4,  # show labels on right side
                             ...)
-                 panel.barchart(x,y,stack=F,lty = 0,col = ifelse(group.number==1 , "red", "blue"),border = T...)
-                 panel.grid(v=-1, h=-1, lty=10)
+                 panel.barchart(x,y,stack=F,lty = 0.1,col = ifelse(group.number==1 , "red", "blue"),border = T, box.width=0.5,...)
+                 # panel.grid(v=-1, h=-1, lty=10)
                }
 )
 
