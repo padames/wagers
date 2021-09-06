@@ -3,3 +3,4 @@
 .RData
 .Ruserdata
 Main_cache/*
+*.html
