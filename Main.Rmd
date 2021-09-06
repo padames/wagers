@@ -3,10 +3,10 @@ title: "Visualizing expectations and variation through simulation"
 author: "P. Adames"
 date: "`r Sys.Date()`"
 output:
+  word_document: default
   html_document:
     df_print: paged
   pdf_document: default
-  word_document: default
 bibliography: biblio.bib
 description: "Visualizing expectations and variance via simulation"
 ---
@@ -23,7 +23,7 @@ traffic volume and weather are but the two more prominent in our daily lives.
 
 Oftentimes forecasts and averages are rendered useless by the
 seemingly wild variations encountered in spatial and temporal oddities inherent to natural phenomena.
-After all, statistics in general is well known for failing to predict the unusual events.
+After all, statistics, in general, is well known for failing to predict the unusual events.
 
 ## Wagers 
 
@@ -40,7 +40,7 @@ to keep your money. If it comes up 3, 4, 5, or 6 then I give you back $450 (your
 
 ## Comparing the wagers
 
-Assuming a fair die, wager 3 feels balanced at 50% change of winning or loosing the same amount.
+Assuming a fair die, wager 3 feels balanced at 50% chance of winning or losing the same amount.
 Wager 4 feels somewhat unbalanced because one can make 50% profit 2/3 of the time.
 
 
