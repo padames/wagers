@@ -37,6 +37,8 @@ my.settings <- list(
 pp <- barchart(cashflow~tries, data=df, horiz=F,
                groups = wager,
                # main="Cash needed to play",
+               xlab = "Try number",
+               ylab = "Cash flow, $",
                box.ratio = 5,
                aspect = "fill",
                lty=0, stack=F, 

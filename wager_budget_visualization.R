@@ -28,15 +28,12 @@ for (i in 1:60) {
   
   die3 = sample(outsp,n,replace=T)
   die4 = sample(outsp,n,replace=T)
-  cashflow3 = 300 - 600*(die3>3)
-  cashflow4 = 300 - 450*(die4>2)
+  cashflow3 = -300 + 600*(die3>3)
+  cashflow4 = -300 + 450*(die4>2)
   
-  # money necessary for first wager entry:
-  cashflow3[1] <- 300
-  cashflow3[1] <- 300
-  
-  cash3 = sapply(seq_along(1:n), function(i){ifelse(i==1, 300, sum(cashflow3[1:i]))})
-  cash4 = sapply(seq_along(1:n), function(i){ifelse(i==1, 300, sum(cashflow4[1:i]))})
+
+  cash3 = sapply(seq_along(1:n), function(i){ifelse(i==1, -300, sum(cashflow3[1:i]))})
+  cash4 = sapply(seq_along(1:n), function(i){ifelse(i==1, -300, sum(cashflow4[1:i]))})
   
   df3 <- data.frame(wager=rep(wagerLabels[1],length(cash3)),
                     cashflow=cash3,
@@ -52,9 +49,11 @@ for (i in 1:60) {
                  aspect = "fill",
                  lty=0, stack=F, 
                  origin=0, reference=T,
+                 xlab = "Try number",
+                 ylab = "Cash flow, $",
                  par.settings = my.settings,
                  auto.key = list(space = "top", columns=2,
-                                 title="Cash needed to play",
+                                 title="60 different cash flow histories for 2,000 plays of two different wagers",
                                  cex.title=1.1),
                  col=c("red","blue"),
                  ylim = c(-35000,35000),
@@ -79,7 +78,7 @@ dev.off()
 # It assumes we are in an Ubuntu installation with the program convert from ImageMagick
 
 # converting .png file in .gif using ImageMagick
-system("/usr/bin/convert -delay 40 *.png money_to_play_by_wager.gif")
+system("/usr/bin/convert -delay 40 *.png wager_cash_flow_comparison.gif")
 
 # Remove .png file
 file.remove(list.files(pattern=".png"))
