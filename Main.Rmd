@@ -51,7 +51,7 @@ straightforward way of doing so.
 ### Expected Profit from the wagers
 
 The profit of a wager is defined as the payout minus the cost of entry.
-The expected profit of each wager are:
+The expected profit of each wager is:
 
     E(X)   = [x_1 x P(X=x_1) + .. + x_n P(X=x_n)] - C                                               [1]
            = [(x_1 -C) x P(X=x_1) + .. + (x_n -C) x P(X=x_n)]                                       [2]
@@ -67,8 +67,8 @@ The expected profit of each wager are:
 Eq. [2] is simpler to compute the variance, and thus it is used in Eq. [3] below.
  
 Note: I modified the values of the original wagers from the reference in an effort to make the dollar amounts more realistic. 
-This apparently takes away from what is considered a fair bet, however we will defer
-that subject for another day and definitively recommend that the curious reader go to the source of the wagers for this discussion [@RodMen2018, Chapter 2] 
+This apparently takes away from what is considered a fair bet, however, we will defer
+that subject for another day and definitively recommend that the curious reader goes to the source of the wagers for this discussion [@RodMen2018, Chapter 2] 
 
 
 Let's use R to compute those values.
@@ -110,10 +110,9 @@ cat(paste(
   " dollars"))
 ```
 
-All that effort to confirm that neither wager will either make you money nor 
-will make you lose a penny in the long run.
+All that effort to confirm that neither wager will make or lose you money in the long run.
 So, where does that leave us in terms of the relative merits or 
-drawbacks if each bet?
+drawbacks of each bet?
 We need other tools to analyze the outcomes from engaging in either
 wager.
 
