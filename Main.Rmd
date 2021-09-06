@@ -40,8 +40,12 @@ to keep your money. If it comes up 3, 4, 5, or 6 then I give you back $450 (your
 
 ## Comparing the wagers
 
+Assuming a fair die, wager 3 feels balanced at 50% change of winning or loosing the same amount.
+Wager 4 feels somewhat unbalanced because one can make 50% profit 2/3 of the time.
+
+
 We need to compare the two wagers to assess their relative benefit.
-The statistical mean of the expected value of each wager is a  
+The expected profit from each wager in statistical terms is a  
 straightforward way of doing so.
 
 ### Expected Profit from the wagers
@@ -60,12 +64,11 @@ The expected profit of each wager are:
            = [(-300) x (1/3) + 150 x (2/3)]
            = 0
 
-The second expression, Eq [2], in the above formulae is simpler to compute the variance in Eq. [3] below.
+Eq. [2] is simpler to compute the variance, and thus it is used in Eq. [3] below.
  
-Note: I modified the values of the original wagers in an effort to make the dollar amounts more
-realistic. This apparently takes away from what is considere a fair bet, however we will defer
-that subject for another day and definitively recommend that the curious reader go to the motivating 
-source for this discussion [@RodMen2018, Chapter 2] 
+Note: I modified the values of the original wagers from the reference in an effort to make the dollar amounts more realistic. 
+This apparently takes away from what is considered a fair bet, however we will defer
+that subject for another day and definitively recommend that the curious reader go to the source of the wagers for this discussion [@RodMen2018, Chapter 2] 
 
 
 Let's use R to compute those values.
