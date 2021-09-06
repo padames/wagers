@@ -170,13 +170,29 @@ What does that say about the gambling budget necessary to sustain these wagers?
 
 ## Experiencing variability via simulation
 
-As a means of experiencing the variability of the expected results using either wager let's simulate 60 nights playing 2,000
-bets of weach wager. 
+I believe a realistic way of thinking about what the variability of the expected
+outcomes of these two wagesr is thinking in terms of the cash flow necessary to
+sustain 2,000 bets, the same number we used for the previous simulations of the 
+expected profit.
+
+The following animated image shows 60 such sets of 2,000 bets one for each wager.
+The idea is to glance at all of them to get a sense for the wager that gives the most
+extreme variations in the positive or negative cash flow necessary to sustain
+the 2,000 bets.
 
 
 ```{r "cash flows via simulation", echo=FALSE, results='asis'}
 knitr::include_graphics("animations/wager_cash_flow_comparison.gif", dpi = 86)
 ```
+
+Overall, it seems the red histograms span larger areas than the blue ones.
+This reinforces the results from the calculation of variance showing that wager 3 has 
+more variability than wager 4.
+
+
+Note that wager 3 may require larger amounts of cash to sustain the 2,000 bets, 
+when the cash flow is negative. At this point is worth reminding the reader that both
+wagers have a neutral expected profit.
 
 
 
