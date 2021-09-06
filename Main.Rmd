@@ -170,6 +170,10 @@ What does that say about the gambling budget necessary to sustain these wagers?
 
 ## Experiencing variability via simulation
 
+As a means of experiencing the variability of the expected results using either wager let's simulate 60 nights playing 2,000
+bets of weach wager. 
+
+
 ```{r "cash flows via simulation", echo=FALSE, results='asis'}
 knitr::include_graphics("animations/wager_cash_flow_comparison.gif", dpi = 86)
 ```
