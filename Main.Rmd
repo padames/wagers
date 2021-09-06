@@ -121,12 +121,12 @@ in reality, albeit after a few repetitions, after all practice makes perfect, ri
 
 ### Simulation
 
-In the following animated gif image you will see 30 sets of 20,000 bets using wager 3 in blue
+In the following animated gif image you will see 30 sets of 2,000 bets using wager 3 in blue
 and the same number of bets using wager 4 in red. 
-Each of the 30 sets starts with a different random number seed before sampling the die with replacement 20,000 times.
+Each of the 30 sets starts with a different random number seed before sampling the die with replacement 2,000 times.
 Because R is a vectorized language, this is done in a single line:
 
-    die_results = sample(x =1:6, size = 20000, replace = TRUE)
+    die_results = sample(x =1:6, size = 2000, replace = TRUE)
     
 The running profit is obtained by dividing the sum of the net profit by the number of times played.
 That explains why if you always _won_ the bet the maximum the running profit would ever be is the maximum payout, 
