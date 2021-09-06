@@ -168,6 +168,11 @@ This means that the variability of the profit with wager 3 can be substantially 
 What does that say about the gambling budget necessary to sustain these wagers?
 
 
+## Experiencing variability via simulation
+
+```{r "cash flows via simulation", echo=FALSE, results='asis'}
+knitr::include_graphics("animations/wager_cash_flow_comparison.gif", dpi = 86)
+```
 
 
 
