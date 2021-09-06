@@ -32,8 +32,12 @@ for (i in 1:60) {
   cashflow4 = -300 + 450*(die4>2)
   
 
-  cash3 = sapply(seq_along(1:n), function(i){ifelse(i==1, -300, sum(cashflow3[1:i]))})
-  cash4 = sapply(seq_along(1:n), function(i){ifelse(i==1, -300, sum(cashflow4[1:i]))})
+  cash3 = sapply(seq_along(1:n), 
+                 function(i){ ifelse(i==1, -300, 
+                                     sum(cashflow3[1:(i-1)])+(300-600*(die3[i-1]>3)))})
+  cash4 = sapply(seq_along(1:n), 
+                 function(i){ ifelse(i==1, -300, 
+                                     sum(cashflow4[1:(i-1)])+(300-450*(die4[i-1]>2)))})
   
   df3 <- data.frame(wager=rep(wagerLabels[1],length(cash3)),
                     cashflow=cash3,

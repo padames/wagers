@@ -8,10 +8,13 @@ die4 = sample(outsp,n,replace=T)
 cashflow3 = 300 - 600*(die3>3)
 cashflow4 = 300 - 450*(die4>2)
 
-cashflow3[1] <- 300
-cashflow3[1] <- 300
-cash3 = sapply(seq_along(1:n), function(i){ifelse(i==1, 300, sum(cashflow3[1:i]))})
-cash4 = sapply(seq_along(1:n), function(i){ifelse(i==1, 300, sum(cashflow4[1:i]))})
+cash3 = sapply(seq_along(1:n), 
+               function(i){ ifelse(i==1, -300, 
+                                   sum(cashflow3[1:(i-1)])+(300-600*(die3[i-1]>3)))})
+cash4 = sapply(seq_along(1:n), 
+               function(i){ ifelse(i==1, -300, 
+                                   sum(cashflow4[1:(i-1)])+(300-450*(die4[i-1]>2)))})
+
 
 # put together a data frame in long form
 # first the wage 4 so the lattice barchart format c(1,2) puts the wager 3 last or on top
