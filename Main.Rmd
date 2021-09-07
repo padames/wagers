@@ -129,11 +129,9 @@ Because R is a vectorized language, this is done in a single line:
     die_results = sample(x =1:6, size = 2000, replace = TRUE)
     
 The running profit is obtained by dividing the sum of the net profit by the number of times played.
-That explains why if you always _won_ the bet the maximum the running profit would ever be is the maximum payout, 
-`$300` in the case of wager 3 and `$150` for wager 4. 
-However, if you always _lost_ both would averge a $300 loss.
-Please remember that this does not make wager 3 any more desirable by itself because both converge to the 
-same expected value in the long term, zero profit.
+That explains why if you always win the bet the maximum running profit is the maximum payout, `$300`, in the case of wager 3 and `$150` for wager 4. However, if you always lose, both wagers would produce a `$300` loss.
+
+Please remember that this does not make wager 3 any more desirable by itself because both converge to the same expected value in the long term, zero profit.
 
 
 ```{r "comparing wagers via simulation", echo=FALSE, results='asis'}
@@ -154,7 +152,7 @@ The statistical variance might give us a clue, it is calculated as follows:
          = (x_1)^2 P(X = x_1) + .. + (x_n)^2 P(X = x_n)                                             
            - {x_1 P(X = x_1) + .. + x_n P(X= x_n)}^2                                                [4]
 
-Substituting for wager 3:
+Substituting for each wager:
 
     V(W_3) = [(-300)^2 x (1/2) + (300)^2 x (1/2)] - {(-300) x (1/2) + 300 x (1/2)}^2
            =  300^2 - {0}
@@ -173,7 +171,7 @@ What does that say about the gambling budget necessary to sustain these wagers?
 ## Experiencing variability via simulation
 
 I believe a realistic way of thinking about what the variability of the expected
-outcomes of these two wagesr is thinking in terms of the cash flow necessary to
+outcomes of these two wagers is thinking in terms of the cash flow necessary to
 sustain 2,000 bets, the same number we used for the previous simulations of the 
 expected profit.
 
