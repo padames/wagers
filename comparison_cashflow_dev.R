@@ -1,3 +1,19 @@
+#!/usr/bin/env Rscript
+# Run from command line with RScript NAME_OF_FILE <ARGUMENT1,...>
+
+width <- 1200
+height <- 800
+
+args = commandArgs(trailingOnly=TRUE)
+
+if (length(args)>1) {
+  width = as.numeric(args[1])
+  height = as.numeric(args[2])
+} else {
+  cat("If both width and height aren't provided I will use defaults.")
+}
+cat(paste0("Creating images of width=", width, " by height=", height,"."))
+
 library(tigerstats)
 
 n = 2000
@@ -28,7 +44,7 @@ df <- rbind(df3, df4)
 
 # print(head(df))
 
-png(file="simbudget%02d.png", width=1200, height=800)
+png(file="simbudget%02d.png", width=width, height=height)
 
 my.settings <- list(
   superpose.polygon=list(col=c("red","blue"), border="transparent"),
