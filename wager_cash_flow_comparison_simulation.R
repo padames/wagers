@@ -97,8 +97,8 @@ dev.off()
 # This section is machine dependent. 
 # It assumes we are in an Ubuntu installation with the program convert from ImageMagick
 
-# converting .png file in .gif using ImageMagick
-system("/usr/bin/convert -delay 40 *.png wager_cash_flow_comparison.gif")
+# converting png files into an animated gif using ImageMagick
+system("/usr/bin/convert -delay 80 *.png wager_cash_flow_comparison.gif")
 
 # Remove .png file
 file.remove(list.files(pattern=".png"))
