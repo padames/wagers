@@ -1,3 +1,7 @@
 # wagers
 
-A visual explanation of how two wagers behave in terms of expected profit and variance. 
+A visual explanation of how two wagers behave regarding expected profit and variance. 
+
+The R scripts generate the gif files used in the RMarkdown file.
+
+
