@@ -3,9 +3,9 @@ title: "Visualizing expectations and variation through simulation"
 author: "P. Adames"
 date: "`r Sys.Date()`"
 output:
-  word_document: default
   html_document:
     df_print: paged
+  word_document: default
   pdf_document: default
 bibliography: biblio.bib
 description: "Visualizing expectations and variance via simulation"

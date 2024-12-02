@@ -4,3 +4,5 @@
 .Ruserdata
 Main_cache/*
 *.html
+git-push.sh
+rsconnect/
