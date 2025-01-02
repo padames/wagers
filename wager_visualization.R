@@ -1,81 +1,85 @@
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load("here")
+if (!require("pacman")) {
+    install.packages("pacman")
+}
+library("pacman")
+
+# load libraries 
+pacman::p_load(char = c("here", "lattice", "tigerstats"), 
+               install = TRUE)
 
 suppressWarnings(my_proj_path <- here())
 
+source(here::here("create_xyplot.R"))
+
+# prepare the animations folder and switch to it 
+
 if (!file.exists(file.path(my_proj_path,"animations"))) {
-  dir.create(file.path(my_proj_path, "animations"))
+    dir.create(file.path(my_proj_path, "animations"))
 }
+
 setwd(file.path(my_proj_path, "animations"))
 
-library(lattice)
-library(tigerstats)
+# prepare to run the simulations, the plots and the png files for each frame to 
+# be included in the animation
 
-n = 20000
+numsimulations = 20000
+numframes = 30
 
+set.seed(1892)
+dievalues = seq(1,6)
+
+# set the output device for subsequent 'print' commands as a series of files
+# in PNG format with a same including a sequential 2-digit number starting with 00
 png(file="simwager%02d.png", width=600, height=400)
 
-wagerLabels = c("Wager 3", "Wager 4")
-
-outsp = seq(1,6)
-
-for (i in 1:30){
-  
-  die3 = sample(outsp,n,replace=T)
-  die4 = sample(outsp,n,replace=T)
-  profit3 = 300*(die3>3) - 300*(die3<=3)
-  profit4 = 150*(die4>2) - 300*(die4<=2)
-  
-  runningprf3 = cumsum(profit3)/seq(1,n)
-  runningprf4 = cumsum(profit4)/seq(1,n)
-  
-  # put together a data frame in long form
-  df3 <- data.frame(wager=rep(3,length(runningprf3)),runningprf=runningprf3,tries=seq(1,n))
-  df4 <- data.frame(wager=rep(4,length(runningprf4)),runningprf=runningprf4,tries=seq(1,n))
-  df <- rbind(df3, df4)
-  
-  pp <- xyplot(runningprf~tries, data=df,
-               groups = wager,
-               par.settings = list(superpose.line = list(col = c("blue","red"),
-                                                         lwd = 1)),
-               auto.key=list(space="top", columns=2,
-                             text=c("Wager3 = 300(die>3) - 300(die<=3)", "Wager 4 = 150(die>2) - 300(die<=2)"),
-                             title="Running profits from two different wagers", 
-                             cex.title=2,
-                             lines=TRUE, points=FALSE),
-               xlab="Tries",
-               xlim = c(1, n),
-               scales=list(cex=c(1.1, 1.1), # increase font size
-                           x = list(log = T), 
-                           y = list(log = F),
-                           alternating = 1,   # axes labels left/bottom 
-                           tck = c(1,0)),   # ticks only with labels
-               ylab="Profit",
-               ylim = c(-350, 350),
-               type=c("l"),
-               panel=panel.superpose,
-               panel.groups = function( x,y,group.number,...) {
-                 # print(levels(factor(df$wager))[group.number])
-                 panel.abline( h=y[ which(y==0.0) ], lty = "dotted", col = "black")
-                 panel.grid(v=-1, h=-1, lty=3)
-                 xt <- x[x==log(min(x)+1)] # find latest year
-                 yt <- y[x==min(x)] # find value at latest year
-                 panel.text(xt, yt, labels=wagerLabels[group.number], 
-                            pos=4,  # show labels on right side
-                            ...)
-                 panel.xyplot(x,y,...)
-               }
-  )
-  print(pp)
+for (i in 1:numframes) {
+    die3 = sample(dievalues, numsimulations, replace = T)
+    die4 = sample(dievalues, numsimulations, replace = T)
+    
+    profit3 = 300 * (die3 > 3) - 300 * (die3 <= 3)
+    profit4 = 150 * (die4 > 2) - 300 * (die4 <= 2)
+    
+    runningprofit3 = cumsum(profit3) / seq(1, numsimulations)
+    runningprofit4 = cumsum(profit4) / seq(1, numsimulations)
+    
+    df3 <- data.frame( wager = rep(3, length(runningprofit3)),
+                       runningprofit = runningprofit3,
+                       tries = seq(1, numsimulations))
+    
+    df4 <- data.frame( wager = rep(4, length(runningprofit4)),
+                       runningprofit = runningprofit4,
+                       tries = seq(1, numsimulations))
+    
+    # stack these two data frames into a single one:
+    df <- rbind(df3, df4)
+    
+    # prepare arguments to the plot function
+    args_to_plot <- list( subgroup_variable = 'wager',
+                          subgroup_descriptions = c("Wager3 = 3(die>3) - 3(die<=3)",
+                                                    "Wager 4 = 1.5(die>2) - 3(die<=2)"),
+                          text_labels_for_plot = list(title="Running profits from two different wagers",
+                                                      x_label="Number of tries",
+                                                      y_label="Cummulative profit"),
+                          min_max_y_to_plot = c(-350, 350))
+    
+    pp <- create_xyplot(df, 
+                        args_to_plot)
+    # each frame gets created as one PNG file by the following command:
+    print(pp)
 }
 
+# disconnect the print action from the PNG device so future 'print' won't create PNG files
 dev.off()
 
 # This section is machine dependent. 
-# It assumes we are in an Ubuntu installation with the program convert from ImageMagick
+# It assumes we are in a Ubuntu/Linux installation and the program convert from
+# the package ImageMagick has been installed in the machine before hand.
 
-# converting .png file in .gif using ImageMagick
-system("/usr/bin/convert -delay 40 *.png wager_comp_sim.gif")
+# The delay argument is 60 centiseconds, which means there is a 0.4 second wait 
+# before the new image is added to the animation gif file. 
+# This gives approximate 1 frame per second
+system("/usr/bin/convert -delay 60 *.png -write wager_comp_sim.gif")
 
-# Remove .png file
-file.remove(list.files(pattern=".png"))
+# Remove all 'png' files as they are not needed anymore 
+file.remove(list.files(path = here::here("animations"), 
+                       pattern=".png"))
